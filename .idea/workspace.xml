@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="" />
+    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/SwaggerResourceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/filter/SwaggerHeaderFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/param/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/param/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +29,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -31,43 +44,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.tx-view-display-server [clean].executor": "Run",
-    "Maven.tx-view-display-server [mvn...].executor": "Run",
-    "Maven.tx-view-display-server [org.apache.maven.plugins:maven-source-plugin:3.3.0:test-jar].executor": "Run",
-    "Maven.tx-view-display-system [clean].executor": "Run",
-    "Maven.tx-view-display-system [compile].executor": "Run",
-    "Maven.tx-view-display-system [mvn...].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.AuthApplication.executor": "Debug",
-    "Spring Boot.CusApplication.executor": "Debug",
-    "Spring Boot.GatewayApplication.executor": "Debug",
-    "Spring Boot.PolicyApplication.executor": "Debug",
-    "Spring Boot.SystemApplication.executor": "Debug",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/work/tx-view-display-server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.AuthApplication.executor": "Debug",
-    "应用程序.GatewayApplication.executor": "Debug",
-    "应用程序.Main.executor": "Run",
-    "应用程序.SystemApplication.executor": "Debug"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.tx-view-display-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tx-view-display-server [mvn...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tx-view-display-server [org.apache.maven.plugins:maven-source-plugin:3.3.0:test-jar].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tx-view-display-system [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tx-view-display-system [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tx-view-display-system [mvn...].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.CusApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.PolicyApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.SystemApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/work/tx-view-display-server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.AuthApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;应用程序.GatewayApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.SystemApplication.executor&quot;: &quot;Debug&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -218,10 +232,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GatewayApplication" />
-        <item itemvalue="Spring Boot.SystemApplication" />
         <item itemvalue="Spring Boot.AuthApplication" />
+        <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.PolicyApplication" />
+        <item itemvalue="Spring Boot.SystemApplication" />
         <item itemvalue="应用程序.GatewayApplication" />
       </list>
     </recent_temporary>
@@ -246,7 +260,8 @@
       <workItem from="1781141322046" duration="13174000" />
       <workItem from="1781228059121" duration="31470000" />
       <workItem from="1781661069454" duration="19263000" />
-      <workItem from="1781748851314" duration="304000" />
+      <workItem from="1781748851314" duration="7452000" />
+      <workItem from="1781775681029" duration="13212000" />
     </task>
     <servers />
   </component>
@@ -327,43 +342,13 @@
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/filter/MicroserviceGatewayAuthFilter.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/filter/MicroserviceGatewayAuthFilter.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/filter/MicroserviceGatewayAuthFilter.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/6.2.4/spring-security-web-6.2.4.jar!/org/springframework/security/web/context/SecurityContextHolderFilter.class</url>
-          <line>43</line>
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/6.1.6/spring-aop-6.1.6.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.class</url>
           <line>415</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/filter/MicroserviceGatewayAuthFilter.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-base/src/main/java/com/txrd/base/exception/GlobalExceptionHandler.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/SecurityConfig.java</url>
-          <line>63</line>
+          <line>75</line>
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -380,16 +365,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-oauth2-jose/6.2.4/spring-security-oauth2-jose-6.2.4.jar!/org/springframework/security/oauth2/jwt/NimbusReactiveJwtDecoder.class</url>
           <line>163</line>
           <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-policy/src/main/java/com/txrd/PolicyApplication.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-cus/src/main/java/com/txrd/CusApplication.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="134" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperationLogAspect.java</url>
@@ -412,19 +387,9 @@
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/CustomAuthenticationEntryPoint.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/MethodSecurityDebug.java</url>
           <line>19</line>
           <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/filter/MicroserviceGatewayAuthFilter.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/filter/AuthGlobalFilter.java</url>
@@ -432,9 +397,9 @@
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/filter/AuthGlobalFilter.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="149" />
+          <url>file://$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/ICaptchaService.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/6.1.6/spring-context-6.1.6.jar!/org/springframework/context/support/AbstractMessageSource.class</url>
