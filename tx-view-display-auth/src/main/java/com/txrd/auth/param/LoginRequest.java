@@ -12,11 +12,11 @@ public class LoginRequest {
     @NotBlank(message = "{user.password.null}")
     private String password;
 
-//    @NotBlank(message = "{user.captcha.key.null}")
-//    private String captchaKey;
-//
-//    @NotBlank(message = "{user.captcha.code.null}")
-//    private String captchaCode;
+    @NotBlank(message = "{user.captcha.key.null}")
+    private String captchaKey;
+
+    @NotBlank(message = "{user.captcha.code.null}")
+    private String captchaCode;
 
 
 }

@@ -36,10 +36,10 @@ public class AuthServiceImpl implements IAuthService {
 
     @Override
     public CommonResult<LoginDto> login(LoginRequest request) {
-//        CommonResult rst = captchaService.verifyCaptcha(request.getCaptchaKey(), request.getCaptchaCode());
-//        if(rst.getCode() != CommonResult.CODE_SUCCESS){
-//            return rst;
-//        }
+        CommonResult rst = captchaService.verifyCaptcha(request.getCaptchaKey(), request.getCaptchaCode());
+        if(rst.getCode() != CommonResult.CODE_SUCCESS){
+            return rst;
+        }
         // 1. 查询用户
         UserVo user = userClient.getInfo(request.getUsername());
 
