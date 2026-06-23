@@ -53,6 +53,18 @@ public class SecurityConfig {
                         // 1. 白名单：直接放行，不进行任何 JWT 校验
                         .pathMatchers("/auth/**").permitAll()
                         .pathMatchers("/*/test").permitAll()
+                        .pathMatchers("favicon.ico").permitAll()
+                        .pathMatchers("/doc.html").permitAll()
+                        .pathMatchers("/swagger-resources").permitAll()
+                        .pathMatchers("/swagger-ui/**").permitAll()
+                        .pathMatchers("/v3/api-docs/**").permitAll()
+                        .pathMatchers("/webjars/**").permitAll()
+                        .pathMatchers("/*/favicon.ico").permitAll()
+                        .pathMatchers("/*/doc.html").permitAll()
+                        .pathMatchers("/*/swagger-resources").permitAll()
+                        .pathMatchers("/*/swagger-ui/**").permitAll()
+                        .pathMatchers("/*/v3/api-docs/**").permitAll()
+                        .pathMatchers("/*/webjars/**").permitAll()
                         // 2. 其他所有请求：需要认证，并使用自定义授权管理器
                         .anyExchange().authenticated()
                 ).oauth2ResourceServer(oauth2 -> oauth2.

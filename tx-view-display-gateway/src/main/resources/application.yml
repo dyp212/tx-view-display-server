@@ -68,6 +68,15 @@ spring:
             - Path=/policy/**
           filters:
             - StripPrefix=1
+knife4j:
+  gateway:
+    enabled: true
+    strategy: discover
+    discover:
+      enabled: true
+      version: openapi3
+      excluded-services:
+        - gateway-service
 
 
 
