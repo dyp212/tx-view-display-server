@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -26,7 +27,9 @@ public class CustomJwtAuthenticationConverter implements Converter<Jwt, Mono<Cus
 
         // 3. 提取自定义 Claim: permissions
         // 注意：如果 JWT 里没有存 permissions，这里可以留空，后续在 AuthorizationManager 里查
-        List<String> permissions = jwt.getClaimAsStringList("permissions");
+        List<String> permissions = Optional.ofNullable(jwt.getClaimAsStringList("permissions")).orElse(Collections.emptyList());
+        List<String> roles = Optional.ofNullable(jwt.getClaimAsStringList("roles")).orElse(Collections.emptyList());
+        permissions.addAll(roles.stream().map(item->"ROLE_"+item).toList());
 
         // 4. 将 permissions 转换为 Spring Security 的 GrantedAuthority
         Collection<GrantedAuthority> authorities = Collections.emptyList();
@@ -37,6 +40,6 @@ public class CustomJwtAuthenticationConverter implements Converter<Jwt, Mono<Cus
         }
 
         // 5. 构建 MOno
-        return Mono.just(new CustomerAuthenticationToken(userId, jwt, authorities));
+        return Mono.just(new CustomerAuthenticationToken(jwt, authorities, userId, account));
     }
 }

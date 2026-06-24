@@ -83,8 +83,8 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
 
     private String extractAccount(Authentication authentication) {
-        if (authentication instanceof JwtAuthenticationToken jwtToken) {
-            return jwtToken.getToken().getClaimAsString("username");
+        if (authentication instanceof CustomerAuthenticationToken customerAuthenticationToken) {
+            return customerAuthenticationToken.getAccount();
         }
         return "";
     }

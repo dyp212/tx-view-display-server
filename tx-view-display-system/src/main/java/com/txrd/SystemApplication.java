@@ -16,6 +16,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -37,7 +38,7 @@ public class SystemApplication {
     @Operation(summary = "测试")
     @GetMapping("/test")
     @PreAuthorize("hasRole('SYSTEM') or hasAuthority('test')")
-    public CommonResult<String> test() {
+    public CommonResult<String> test(@RequestHeader("account")String currentAccount, @RequestHeader("userId")String userId) {
         return CommonResult.data(I18nUtil.getMessage("system.test"));
     }
 }
