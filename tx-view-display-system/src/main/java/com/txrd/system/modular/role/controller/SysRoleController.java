@@ -9,6 +9,7 @@ import com.txrd.base.result.CommonResult;
 import com.txrd.system.modular.role.entity.SysRole;
 import com.txrd.system.modular.role.service.ISysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -31,9 +32,9 @@ public class SysRoleController {
     @Operation(summary = "获取角色列表")
     @GetMapping("/page")
     public CommonResult<IPage<SysRole>> getPage(
-            @RequestParam(defaultValue = "1") long current,
-            @RequestParam(defaultValue = "10") long size,
-            SysRole queryRole) {
+            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
+            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
+            @Schema(description = "搜索条件，name,orgId") SysRole queryRole) {
         IPage<SysRole> page = new Page<>(current, size);
         return CommonResult.data(roleService.selectRolePage(page, queryRole));
     }
@@ -51,7 +52,7 @@ public class SysRoleController {
     @ApiOperationSupport(order = 3)
     @Operation(summary = "根据ID获取详情")
     @GetMapping("/info/{id}")
-    public CommonResult<SysRole> getById(@PathVariable("id") Long id) {
+    public CommonResult<SysRole> getById(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         return CommonResult.data(roleService.getById(id));
     }
 
@@ -61,7 +62,7 @@ public class SysRoleController {
     @ApiOperationSupport(order = 5)
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
-    public CommonResult remove(@PathVariable("id") Long id) {
+    public CommonResult remove(@Schema(description = "要操作数据ID") @PathVariable("id") Long id) {
         SysRole role = new SysRole();
         role.setId(id);
         role.setDeleteFlag(1); // 标记删除

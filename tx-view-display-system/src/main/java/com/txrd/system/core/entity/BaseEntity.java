@@ -23,16 +23,20 @@ public class BaseEntity implements Serializable {
 
     @TableField(fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Schema(description = "创建时间")
     private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT)
+    @Schema(description = "创建操作人")
     private String createUser;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Schema(description = "更新时间")
     private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
+    @Schema(description = "更新操作人")
     private String updateUser;
 
 }

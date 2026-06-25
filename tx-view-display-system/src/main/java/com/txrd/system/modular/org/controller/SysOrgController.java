@@ -12,6 +12,7 @@ import com.txrd.system.modular.org.dto.OrgTreeDTO;
 import com.txrd.system.modular.org.entity.SysOrg;
 import com.txrd.system.modular.org.service.ISysOrgService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +45,9 @@ public class SysOrgController {
     @GetMapping("/page")
 //    @RequirePermission("org:page")
     public CommonResult<IPage<SysOrg>> getPage(
-            @RequestParam(defaultValue = "1") long current,
-            @RequestParam(defaultValue = "10") long size,
-            SysOrg queryOrg) {
+            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
+            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
+            @Schema(description = "搜索条件，name,parentId")SysOrg queryOrg) {
         IPage<SysOrg> page = new Page<>(current, size);
         return CommonResult.data(sysOrgService.selectOrgPage(page, queryOrg));
     }
@@ -69,7 +70,7 @@ public class SysOrgController {
     @Operation(summary = "根据ID获取详情")
     @GetMapping("/info/{id}")
 //    @RequirePermission("org:getbyId")
-    public CommonResult<SysOrg> getById(@PathVariable("id") Long id) {
+    public CommonResult<SysOrg> getById(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         return CommonResult.data(sysOrgService.getById(id));
     }
 
@@ -91,7 +92,7 @@ public class SysOrgController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
 //    @RequirePermission("org:del")
-    public CommonResult remove(@PathVariable("id") Long id) {
+    public CommonResult remove(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         SysOrg org = new SysOrg();
         org.setId(id);
         org.setDeleteFlag(1); // 标记删除

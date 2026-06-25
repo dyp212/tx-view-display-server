@@ -48,8 +48,6 @@ public class OperateLogConsumer {
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (Exception e) {
             // 消费失败处理策略：
-            // 1. 记录错误日志，人工排查
-            // 2. 发送到死信队列 (DLQ)
             log.error("消费操作日志失败，traceId: {}, error: {}", operateLogDTO.getTraceId(), e.getMessage(), e);
         }
     }
