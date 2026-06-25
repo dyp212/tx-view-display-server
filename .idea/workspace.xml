@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="1">
+    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="更新认证权限Token校验的逻辑">
+      <change afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitConfirmConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/util/RabbitMQUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-base/src/main/java/com/txrd/base/security/CustomerAuthenticationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-base/src/main/java/com/txrd/base/security/CustomerAuthenticationToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/CustomJwtAuthenticationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/config/CustomJwtAuthenticationConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/filter/AuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-gateway/src/main/java/com/txrd/gateway/filter/AuthGlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperateLogProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperateLogProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperationLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperationLogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/log/consumer/OperateLogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/log/consumer/OperateLogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +73,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
@@ -110,7 +117,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.SystemApplication">
     <configuration name="GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.txrd.GatewayApplication" />
       <module name="tx-view-display-gateway" />
@@ -257,7 +264,9 @@
       <workItem from="1781228059121" duration="31470000" />
       <workItem from="1781661069454" duration="19263000" />
       <workItem from="1781748851314" duration="7452000" />
-      <workItem from="1781775681029" duration="25707000" />
+      <workItem from="1781775681029" duration="30928000" />
+      <workItem from="1782293708515" duration="1483000" />
+      <workItem from="1782352502220" duration="1016000" />
     </task>
     <task id="LOCAL-00001" summary="恢复登录验证码使用逻辑">
       <option name="closed" value="true" />
@@ -283,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782206255040</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="更新认证权限Token校验的逻辑">
+      <option name="closed" value="true" />
+      <created>1782288492437</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1782288492437</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +310,8 @@
     <MESSAGE value="恢复登录验证码使用逻辑" />
     <MESSAGE value="网关文档逻辑增加" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="更新认证权限Token校验的逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新认证权限Token校验的逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -372,6 +390,16 @@
           <url>file://$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/ICaptchaService.java</url>
           <line>20</line>
           <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/log/consumer/OperateLogConsumer.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/annotation/runner/OperateLogProducer.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="166" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/6.1.6/spring-context-6.1.6.jar!/org/springframework/context/support/AbstractMessageSource.class</url>

@@ -3,6 +3,7 @@ package com.txrd;
 
 import com.txrd.base.result.CommonResult;
 import com.txrd.base.util.I18nUtil;
+import com.txrd.common.annotation.OperationLog;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -10,11 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +35,7 @@ public class SystemApplication {
     @Operation(summary = "测试")
     @GetMapping("/test")
     @PreAuthorize("hasRole('SYSTEM') or hasAuthority('test')")
+    @OperationLog(module = "系统管理模块", type = "测试系统服务", saveResponseData = true)
     public CommonResult<String> test(@RequestHeader("account")String currentAccount, @RequestHeader("userId")String userId) {
         return CommonResult.data(I18nUtil.getMessage("system.test"));
     }

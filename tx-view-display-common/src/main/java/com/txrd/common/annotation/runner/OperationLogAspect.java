@@ -89,7 +89,7 @@ public class OperationLogAspect {
 
             // 6. 异步发送日志
             log.info("日志信息：-> {}", JSONUtil.toJsonStr(operateLogDTO));
-            operateLogProducer.sendLog(operateLogDTO);
+            operateLogProducer.sendLog2Rabbit(operateLogDTO);
         }
 
         return result;
