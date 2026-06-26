@@ -36,7 +36,7 @@ public class SystemApplication {
     @GetMapping("/test")
     @PreAuthorize("hasRole('SYSTEM') or hasAuthority('test')")
     @OperationLog(module = "系统管理模块", type = "测试系统服务", saveResponseData = true)
-    public CommonResult<String> test(@RequestHeader("account")String currentAccount, @RequestHeader("userId")String userId) {
+    public CommonResult<String> test(@RequestHeader(value = "account", required = false)String currentAccount, @RequestHeader(value = "userId", required = false)String userId) {
         return CommonResult.data(I18nUtil.getMessage("system.test"));
     }
 }

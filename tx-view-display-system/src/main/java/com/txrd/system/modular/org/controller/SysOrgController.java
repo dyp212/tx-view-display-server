@@ -81,7 +81,7 @@ public class SysOrgController {
     @Operation(summary = "新增或修改")
     @PostMapping("/save")
 //    @RequirePermission("org:saveOrUpdate")
-    public CommonResult save(@RequestHeader("account") String currentAccount, @Valid @RequestBody SysOrg sysOrg) {
+    public CommonResult save(@RequestHeader(value = "account", required = false) String currentAccount, @Valid @RequestBody SysOrg sysOrg) {
         return sysOrgService.saveOrg(sysOrg, currentAccount);
     }
 

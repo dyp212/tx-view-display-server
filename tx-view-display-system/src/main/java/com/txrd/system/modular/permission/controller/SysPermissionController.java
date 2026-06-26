@@ -61,7 +61,7 @@ public class SysPermissionController {
     @Operation(summary = "保存")
     @PostMapping("/save")
     @OperationLog(module = "系统管理模块", type = "保存权限数据", saveResponseData = true)
-    public CommonResult save(@RequestHeader("account")String currentAccount, @RequestBody SysPermission permission) {
+    public CommonResult save(@RequestHeader(value = "account", required = false)String currentAccount, @RequestBody SysPermission permission) {
         Authentication authorities = SecurityContextHolder.getContext().getAuthentication();
          return permissionService.savePermission(permission, currentAccount);
     }

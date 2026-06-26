@@ -42,7 +42,7 @@ public class SysRoleController {
     @ApiOperationSupport(order = 2)
     @Operation(summary = "保存")
     @PostMapping("/save")
-    public CommonResult save(@RequestHeader("account") String currentAccount, @RequestBody SysRole sysRole) {
+    public CommonResult save(@RequestHeader(value = "account", required = false) String currentAccount, @RequestBody SysRole sysRole) {
         return roleService.saveRole(sysRole, currentAccount);
     }
 

@@ -43,7 +43,7 @@ public class SysPositionController {
     @ApiOperationSupport(order = 2)
     @Operation(summary = "保存")
     @PostMapping("/save")
-    public CommonResult save(@RequestHeader("account") String currentAccount, @RequestBody SysPosition position) {
+    public CommonResult save(@RequestHeader(value = "account", required = false) String currentAccount, @RequestBody SysPosition position) {
         return positionService.savePostion(position, currentAccount);
     }
 

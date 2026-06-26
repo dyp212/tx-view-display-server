@@ -4,29 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="增加rabbitMQ异步存储日志">
+    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="文档参数返回值增加注释">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/PermissionVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/PermissionVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/RoleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/RoleVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-api/tx-view-display-system-api/src/main/java/com/txrd/system/vo/UserVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/CaptchaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/CaptchaDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/LoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/LoginDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/param/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/param/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/core/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/core/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/log/consumer/OperateLogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/log/consumer/OperateLogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/controller/SysOrgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/controller/SysOrgController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/entity/SysOrg.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/entity/SysOrg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/controller/SysPermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/controller/SysPermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/entity/SysPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/entity/SysPermission.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/controller/SysPositionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/controller/SysPositionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/entity/SysPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/entity/SysPosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRolePermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRolePermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRolePermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRolePermission.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/entity/SysUser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +274,7 @@
       <workItem from="1781748851314" duration="7452000" />
       <workItem from="1781775681029" duration="30928000" />
       <workItem from="1782293708515" duration="1483000" />
-      <workItem from="1782352502220" duration="9399000" />
+      <workItem from="1782352502220" duration="13000000" />
     </task>
     <task id="LOCAL-00001" summary="恢复登录验证码使用逻辑">
       <option name="closed" value="true" />
@@ -330,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782354102851</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="文档参数返回值增加注释">
+      <option name="closed" value="true" />
+      <created>1782374229006</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1782374229006</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +336,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="更新认证权限Token校验的逻辑" />
     <MESSAGE value="增加rabbitMQ异步存储日志" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加rabbitMQ异步存储日志" />
+    <MESSAGE value="文档参数返回值增加注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="文档参数返回值增加注释" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

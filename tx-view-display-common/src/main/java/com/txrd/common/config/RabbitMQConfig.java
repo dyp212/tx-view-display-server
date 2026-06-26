@@ -48,8 +48,8 @@ public class RabbitMQConfig {
         // 队列最大长度
         args.put("x-max-length", 1000);
         // 死信交换机
-//        args.put("x-dead-letter-exchange", DEAD_LETTER_EXCHANGE);
-//        args.put("x-dead-letter-routing-key", DEAD_LETTER_KEY);
+        args.put("x-dead-letter-exchange", DEAD_LETTER_EXCHANGE);
+        args.put("x-dead-letter-routing-key", DEAD_LETTER_KEY);
         return QueueBuilder.durable(BUSINESS_QUEUE)
                 .withArguments(args)
                 .build();

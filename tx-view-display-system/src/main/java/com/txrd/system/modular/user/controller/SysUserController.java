@@ -57,7 +57,7 @@ public class SysUserController {
     @Operation(summary = "保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('user:save')")
-    public CommonResult save(@RequestHeader("account") String userAccount, @RequestBody SysUser user) {
+    public CommonResult save(@RequestHeader(value = "account", required = false) String userAccount, @RequestBody SysUser user) {
         Authentication authorities = SecurityContextHolder.getContext().getAuthentication();
         return userService.saveUser(user, userAccount);
     }
@@ -79,7 +79,7 @@ public class SysUserController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
     @RequirePermission("user:del")
-    public CommonResult remove(@RequestHeader("account") String userAccount, @Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
+    public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount, @Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         SysUser user = new SysUser();
         user.setId(id);
         user.setDeleteFlag(1); // 标记删除
