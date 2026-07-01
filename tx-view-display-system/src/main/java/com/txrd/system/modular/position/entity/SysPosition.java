@@ -38,6 +38,12 @@ public class SysPosition extends BaseEntity {
     private String name;
 
     /**
+     * 描述
+     */
+    @Schema(description = "描述")
+    private String remark;
+
+    /**
      * 排序码
      */
     @Schema(description = "排序码")
@@ -48,4 +54,10 @@ public class SysPosition extends BaseEntity {
      */
     @Schema(description = "扩展信息")
     private String extJson;
+
+    /**
+     * 是否可用
+     */
+    @Schema(description = "是否可用")
+    private Integer isEnabled;
 }

@@ -3,8 +3,8 @@ package com.txrd.system.modular.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.txrd.system.modular.user.entity.SysUser;
-import com.txrd.system.vo.PermissionVo;
-import com.txrd.system.vo.RoleVo;
+import com.txrd.common.vo.PermissionVo;
+import com.txrd.common.vo.RoleVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

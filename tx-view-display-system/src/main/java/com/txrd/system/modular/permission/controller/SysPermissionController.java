@@ -10,6 +10,7 @@ import com.txrd.common.annotation.OperationLog;
 import com.txrd.system.modular.permission.dto.SysPermissionDto;
 import com.txrd.system.modular.permission.entity.SysPermission;
 import com.txrd.system.modular.permission.service.ISysPermissionService;
+import com.txrd.system.modular.permission.param.GetPageParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -38,12 +40,8 @@ public class SysPermissionController {
     @ApiOperationSupport(order = 1)
     @Operation(summary = "获取权限列表")
     @GetMapping("/page")
-    public CommonResult<IPage<SysPermission>> getPage(
-            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
-            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
-            @Schema(description = "搜索条件，name,parentId") SysPermission queryPermission) {
-        IPage<SysPermission> page = new Page<>(current, size);
-        return CommonResult.data(permissionService.selectPermissionPage(page, queryPermission));
+    public CommonResult<IPage<SysPermission>> getPage(GetPageParam param) {
+        return CommonResult.data(permissionService.selectPermissionPage(param));
     }
 
 
@@ -83,11 +81,13 @@ public class SysPermissionController {
     @ApiOperationSupport(order = 6)
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
-    public CommonResult remove(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
+    public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount, @Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         SysPermission permission = new SysPermission();
         permission.setId(id);
         permission.setDeleteFlag(1); // 标记删除
-         permissionService.updateById(permission);
+        permission.setUpdateUser(userAccount);
+        permission.setUpdateTime(LocalDateTime.now());
+        permissionService.removeById(permission);
          return CommonResult.ok();
     }
 }

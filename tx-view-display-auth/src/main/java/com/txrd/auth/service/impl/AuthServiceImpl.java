@@ -7,19 +7,15 @@ import com.txrd.auth.service.IAuthService;
 import com.txrd.auth.service.ICaptchaService;
 import com.txrd.base.result.CommonResult;
 import com.txrd.base.util.I18nUtil;
-import com.txrd.base.util.JwtUtil;
 import com.txrd.system.api.IUserClient;
-import com.txrd.system.vo.PermissionVo;
-import com.txrd.system.vo.RoleVo;
-import com.txrd.system.vo.UserVo;
+import com.txrd.common.vo.PermissionVo;
+import com.txrd.common.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service

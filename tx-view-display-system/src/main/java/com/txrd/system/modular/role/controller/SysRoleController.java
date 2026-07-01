@@ -8,12 +8,15 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.txrd.base.result.CommonResult;
 import com.txrd.system.modular.role.entity.SysRole;
 import com.txrd.system.modular.role.service.ISysRoleService;
+import com.txrd.system.modular.user.param.GetPageParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 /**
  * 角色控制器
@@ -31,12 +34,8 @@ public class SysRoleController {
     @ApiOperationSupport(order = 1)
     @Operation(summary = "获取角色列表")
     @GetMapping("/page")
-    public CommonResult<IPage<SysRole>> getPage(
-            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
-            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
-            @Schema(description = "搜索条件，name,orgId") SysRole queryRole) {
-        IPage<SysRole> page = new Page<>(current, size);
-        return CommonResult.data(roleService.selectRolePage(page, queryRole));
+    public CommonResult<IPage<SysRole>> getPage(GetPageParam param) {
+        return CommonResult.data(roleService.selectRolePage(param));
     }
 
     @ApiOperationSupport(order = 2)
@@ -62,11 +61,13 @@ public class SysRoleController {
     @ApiOperationSupport(order = 5)
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
-    public CommonResult remove(@Schema(description = "要操作数据ID") @PathVariable("id") Long id) {
+    public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount,@Schema(description = "要操作数据ID") @PathVariable("id") Long id) {
         SysRole role = new SysRole();
         role.setId(id);
         role.setDeleteFlag(1); // 标记删除
-        roleService.updateById(role);
+        role.setUpdateUser(userAccount);
+        role.setUpdateTime(LocalDateTime.now());
+        roleService.removeById(role);
         return CommonResult.ok();
     }
 }

@@ -1,7 +1,7 @@
 package com.txrd.auth.dto;
 
-import com.txrd.system.vo.PermissionVo;
-import com.txrd.system.vo.RoleVo;
+import com.txrd.common.vo.PermissionVo;
+import com.txrd.common.vo.RoleVo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;

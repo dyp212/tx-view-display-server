@@ -96,6 +96,8 @@ mybatis-plus:
       logic-delete-field: delete_flag
       logic-delete-value: 1
       logic-not-delete-value: 0
+springdoc:
+  default-flat-param-object: true # 关键配置：将对象参数展平显示
 
 logging:
   level:

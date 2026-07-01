@@ -10,6 +10,7 @@ import com.txrd.base.result.CommonResult;
 import com.txrd.common.annotation.RequirePermission;
 import com.txrd.system.modular.org.dto.OrgTreeDTO;
 import com.txrd.system.modular.org.entity.SysOrg;
+import com.txrd.system.modular.org.param.GetPageParam;
 import com.txrd.system.modular.org.service.ISysOrgService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -44,12 +46,8 @@ public class SysOrgController {
     @Operation(summary = "获取组织列表")
     @GetMapping("/page")
 //    @RequirePermission("org:page")
-    public CommonResult<IPage<SysOrg>> getPage(
-            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
-            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
-            @Schema(description = "搜索条件，name,parentId")SysOrg queryOrg) {
-        IPage<SysOrg> page = new Page<>(current, size);
-        return CommonResult.data(sysOrgService.selectOrgPage(page, queryOrg));
+    public CommonResult<IPage<SysOrg>> getPage(GetPageParam param) {
+        return CommonResult.data(sysOrgService.selectOrgPage(param));
     }
 
     /**
@@ -92,11 +90,12 @@ public class SysOrgController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
 //    @RequirePermission("org:del")
-    public CommonResult remove(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
+    public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount,@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
         SysOrg org = new SysOrg();
         org.setId(id);
-        org.setDeleteFlag(1); // 标记删除
-        sysOrgService.updateById(org);
+        org.setUpdateUser(userAccount);
+        org.setUpdateTime(LocalDateTime.now());
+        sysOrgService.removeById(org);
         return CommonResult.ok();
     }
 }

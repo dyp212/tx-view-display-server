@@ -4,6 +4,8 @@ package com.txrd;
 import com.txrd.base.result.CommonResult;
 import com.txrd.base.util.I18nUtil;
 import com.txrd.common.annotation.OperationLog;
+import com.txrd.common.util.LoginUserUtil;
+import com.txrd.common.vo.UserVo;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -37,6 +39,7 @@ public class SystemApplication {
     @PreAuthorize("hasRole('SYSTEM') or hasAuthority('test')")
     @OperationLog(module = "系统管理模块", type = "测试系统服务", saveResponseData = true)
     public CommonResult<String> test(@RequestHeader(value = "account", required = false)String currentAccount, @RequestHeader(value = "userId", required = false)String userId) {
+        UserVo user = LoginUserUtil.getUser();
         return CommonResult.data(I18nUtil.getMessage("system.test"));
     }
 }

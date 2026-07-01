@@ -1,6 +1,7 @@
 package com.txrd.gateway.config;
 
 import com.nimbusds.jose.jwk.RSAKey;
+import com.txrd.gateway.filter.SkipJwtAuthFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,11 +35,15 @@ public class SecurityConfig {
     // 注入自定义的 JWT 转换器（见第二步）
     private final CustomJwtAuthenticationConverter customJwtAuthenticationConverter;
 
+    private final SkipJwtAuthFilter skipJwtAuthFilter;
+
 
     public SecurityConfig(CustomAuthorizationManager customAuthorizationManager,
-                          CustomJwtAuthenticationConverter customJwtAuthenticationConverter) {
+                          CustomJwtAuthenticationConverter customJwtAuthenticationConverter,
+                          SkipJwtAuthFilter skipJwtAuthFilter) {
         this.customAuthorizationManager = customAuthorizationManager;
         this.customJwtAuthenticationConverter = customJwtAuthenticationConverter;
+        this.skipJwtAuthFilter = skipJwtAuthFilter;
     }
 
     @Bean
@@ -79,7 +84,8 @@ public class SecurityConfig {
                         .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                         .accessDeniedHandler(new CustomAccessDeniedHandler())
                 );
-            // 添加日志过滤器（可选）
+            http.addFilterBefore(skipJwtAuthFilter, SecurityWebFiltersOrder.AUTHENTICATION);
+            // 添加日志过滤器
             http.addFilterAt(new WebFilter() {
                 @Override
                 public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {

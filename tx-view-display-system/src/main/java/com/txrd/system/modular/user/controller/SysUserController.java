@@ -2,23 +2,21 @@
 package com.txrd.system.modular.user.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.txrd.base.result.CommonResult;
 import com.txrd.common.annotation.RequirePermission;
 import com.txrd.system.modular.user.entity.SysUser;
+import com.txrd.system.modular.user.param.GetPageParam;
 import com.txrd.system.modular.user.service.ISysUserService;
-import com.txrd.system.vo.UserVo;
+import com.txrd.common.vo.UserVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,11 +44,8 @@ public class SysUserController {
     @ApiOperationSupport(order = 1)
     @Operation(summary = "获取用户分页列表")
     @GetMapping("/page")
-    public CommonResult<IPage<SysUser>> getPage(
-            @Schema(description = "分页码") @RequestParam(defaultValue = "1") long current,
-            @Schema(description = "每页数据") @RequestParam(defaultValue = "10") long size,
-            @Schema(description = "搜索条件，name,account,phone,status,orgId")SysUser queryUser) {
-        return CommonResult.data(userService.selectUserPage(new Page<>(current, size), queryUser));
+    public CommonResult<IPage<SysUser>> getPage(GetPageParam param) {
+        return CommonResult.data(userService.selectUserPage(param));
     }
 
     @ApiOperationSupport(order = 2)
@@ -84,7 +79,8 @@ public class SysUserController {
         user.setId(id);
         user.setDeleteFlag(1); // 标记删除
         user.setUpdateUser(userAccount);
-        userService.updateById(user);
+        user.setUpdateTime(LocalDateTime.now());
+        userService.removeById(user);
         return CommonResult.ok();
     }
 

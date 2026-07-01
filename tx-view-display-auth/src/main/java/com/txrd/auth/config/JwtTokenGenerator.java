@@ -1,14 +1,16 @@
 package com.txrd.auth.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.txrd.system.vo.PermissionVo;
-import com.txrd.system.vo.RoleVo;
-import com.txrd.system.vo.UserVo;
+import com.txrd.common.vo.PermissionVo;
+import com.txrd.common.vo.RoleVo;
+import com.txrd.common.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,9 @@ import java.util.Date;
 public class JwtTokenGenerator {
 
     private static final long EXPIRATION_TIME = 86400000;
+
+    @Autowired
+    private ObjectMapper objectMapper;
     /**
      * 从本地文件读取 RSA 私钥，并生成 JWT Token
      * @param userDetails 用户信息（用户名、权限等）
@@ -52,6 +57,7 @@ public class JwtTokenGenerator {
                     .claim("username", userDetails.getAccount())
                     .claim("roles", userDetails.getRoles().stream().map(RoleVo::getName).toList())
                     .claim("permissions", userDetails.getPermissions().stream().map(PermissionVo::getValue).toList())
+                    .claim("userDetails", objectMapper.writeValueAsString(userDetails))
                     .build();
 
             // 4. 使用 RSA 私钥签名 JWT

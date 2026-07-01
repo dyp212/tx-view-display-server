@@ -4,6 +4,7 @@ package com.txrd.system.modular.position.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.txrd.base.exception.CommonException;
 import com.txrd.base.result.CommonResult;
@@ -12,6 +13,7 @@ import com.txrd.system.modular.org.entity.SysOrg;
 import com.txrd.system.modular.position.entity.SysPosition;
 import com.txrd.system.modular.position.mapper.SysPositionMapper;
 import com.txrd.system.modular.position.service.ISysPositionService;
+import com.txrd.system.modular.position.param.GetPageParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -26,17 +28,13 @@ public class SysPositionServiceImpl extends ServiceImpl<SysPositionMapper, SysPo
 
 
     @Override
-    public IPage<SysPosition> selectPositionPage(IPage<SysPosition> page, SysPosition position) {
+    public IPage<SysPosition> selectPositionPage(GetPageParam param) {
+        IPage<SysPosition> page = new Page<>(param.getCurrent(), param.getSize());
         LambdaQueryWrapper<SysPosition> wrapper = new LambdaQueryWrapper<>();
-
-        // 动态查询条件
-        if (position != null) {
-            // 名称模糊搜索
-            wrapper.like(StringUtils.isNotBlank(position.getName()), SysPosition::getName, position.getName());
-            //
-            wrapper.eq(null != position.getOrgId(), SysPosition::getOrgId, position.getOrgId());
-        }
-
+// 名称模糊搜索
+        wrapper.like(StringUtils.isNotBlank(param.getName()), SysPosition::getName, param.getName());
+        //
+        wrapper.eq(null != param.getOrgId(), SysPosition::getOrgId, param.getOrgId());
         // 默认过滤已删除数据
         wrapper.eq(SysPosition::getDeleteFlag, "0");
 

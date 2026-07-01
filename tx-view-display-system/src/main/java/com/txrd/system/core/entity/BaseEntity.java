@@ -15,10 +15,9 @@ import java.time.LocalDateTime;
 public class BaseEntity implements Serializable {
 
     /** 删除标志 */
-    @JsonIgnore
     @TableLogic(value = "0", delval = "1")
     @Schema(description = "删除标志")
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Integer deleteFlag;
 
     @TableField(fill = FieldFill.INSERT)

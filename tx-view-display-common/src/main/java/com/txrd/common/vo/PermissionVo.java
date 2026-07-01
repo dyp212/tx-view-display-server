@@ -1,29 +1,12 @@
-package com.txrd.system.modular.permission.entity;
+package com.txrd.common.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.txrd.system.core.entity.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-/**
- * 权限
- */
-@EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("sys_permission")
-public class SysPermission extends BaseEntity {
+public class PermissionVo {
 
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 权限ID (自增)
-     */
     @Schema(description = "唯一标识")
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -60,25 +43,7 @@ public class SysPermission extends BaseEntity {
      * 前端路由路径
      */
     @Schema(description = "前端路由路径")
-    private String path;
-
-    /**
-     * 组件路径
-     */
-    @Schema(description = "组件路径")
-    private String component;
-
-    /**
-     * 别名
-     */
-    @Schema(description = "别名")
-    private String pathName;
-
-    /**
-     * 控件显示隐藏
-     */
-    @Schema(description = "控件显示隐藏")
-    private Integer visible;
+    private String uri;
 
     /**
      * 排序码

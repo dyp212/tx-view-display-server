@@ -4,6 +4,7 @@ package com.txrd.system.modular.org.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.txrd.base.exception.CommonException;
@@ -12,6 +13,7 @@ import com.txrd.base.util.I18nUtil;
 import com.txrd.system.modular.org.dto.OrgTreeDTO;
 import com.txrd.system.modular.org.entity.SysOrg;
 import com.txrd.system.modular.org.mapper.SysOrgMapper;
+import com.txrd.system.modular.org.param.GetPageParam;
 import com.txrd.system.modular.org.service.ISysOrgService;
 import com.txrd.system.modular.user.entity.SysUser;
 import org.apache.commons.lang3.StringUtils;
@@ -35,17 +37,13 @@ public class SysOrgServiceImpl extends ServiceImpl<SysOrgMapper, SysOrg> impleme
     private ObjectMapper objectMapper;
 
     @Override
-    public IPage<SysOrg> selectOrgPage(IPage<SysOrg> page, SysOrg org){
+    public IPage<SysOrg> selectOrgPage(GetPageParam param){
+        IPage<SysOrg> page = new Page<>(param.getCurrent(), param.getSize());
         LambdaQueryWrapper<SysOrg> wrapper = new LambdaQueryWrapper<>();
-
-        // 动态查询条件
-        if (org != null) {
-            // 名称模糊搜索
-            wrapper.like(StringUtils.isNotBlank(org.getName()), SysOrg::getName, org.getName());
-            // 精确匹配父ID（可选，用于查看某组织下的子组织分页）
-            wrapper.eq(null != org.getParentId(), SysOrg::getParentId, org.getParentId());
-        }
-
+        // 名称模糊搜索
+        wrapper.like(StringUtils.isNotBlank(param.getName()), SysOrg::getName, param.getName());
+        // 精确匹配父ID（可选，用于查看某组织下的子组织分页）
+        wrapper.eq(null != param.getParentId(), SysOrg::getParentId, param.getParentId());
         // 默认过滤已删除数据
         wrapper.eq(SysOrg::getDeleteFlag, "0");
 

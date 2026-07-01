@@ -2,6 +2,7 @@
 package com.txrd.gateway.filter;
 
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.text.AntPathMatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.txrd.base.result.CommonResult;
 import com.txrd.base.security.CustomerAuthenticationToken;
@@ -33,6 +34,7 @@ import reactor.core.publisher.Mono;
 import java.net.InetSocketAddress;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +55,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
                     // 1. 提取信息
                     String userId = authentication.getName(); // Subject
                     String account = extractAccount(authentication);
+                    String userDetails = extractUserDetails(authentication);
 
                     // 2. 处理语言
                     String language = resolveLanguage(request);
@@ -61,6 +64,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
                     ServerHttpRequest mutatedRequest = request.mutate()
                             .header("userId", userId)
                             .header("account", account)
+                            .header("userDetails", userDetails)
                             .header("permissions", authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(",")))
                             .header("traceId", UUID.randomUUID().toString()) // 建议使用 Slf4j MDC 或 SkyWalking ID
                             .header("Accept-Language", language)
@@ -85,6 +89,13 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     private String extractAccount(Authentication authentication) {
         if (authentication instanceof CustomerAuthenticationToken customerAuthenticationToken) {
             return customerAuthenticationToken.getAccount();
+        }
+        return "";
+    }
+
+    private String extractUserDetails(Authentication authentication) {
+        if (authentication instanceof CustomerAuthenticationToken customerAuthenticationToken) {
+            return customerAuthenticationToken.getToken().getClaimAsString("userDetails");
         }
         return "";
     }

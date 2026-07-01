@@ -3,6 +3,7 @@ package com.txrd.system.modular.permission.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.txrd.base.exception.CommonException;
@@ -15,6 +16,7 @@ import com.txrd.system.modular.permission.entity.SysPermission;
 import com.txrd.system.modular.permission.mapper.SysPermissionMapper;
 import com.txrd.system.modular.permission.service.ISysPermissionService;
 import com.txrd.system.modular.position.entity.SysPosition;
+import com.txrd.system.modular.permission.param.GetPageParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,17 +37,13 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
     private ObjectMapper objectMapper;
 
     @Override
-    public IPage<SysPermission> selectPermissionPage(IPage<SysPermission> page, SysPermission permission){
+    public IPage<SysPermission> selectPermissionPage(GetPageParam param){
+        IPage<SysPermission> page = new Page<>(param.getCurrent(), param.getSize());
         LambdaQueryWrapper<SysPermission> wrapper = new LambdaQueryWrapper<>();
-
-        // 动态查询条件
-        if (permission != null) {
-            // 名称模糊搜索
-            wrapper.like(StringUtils.isNotBlank(permission.getName()), SysPermission::getName, permission.getName());
-            // 精确匹配父ID
-            wrapper.eq(null != permission.getParentId(), SysPermission::getParentId, permission.getParentId());
-        }
-
+// 名称模糊搜索
+        wrapper.like(StringUtils.isNotBlank(param.getName()), SysPermission::getName, param.getName());
+        // 精确匹配父ID
+        wrapper.eq(null != param.getParentId(), SysPermission::getParentId, param.getParentId());
         // 默认过滤已删除数据
         wrapper.eq(SysPermission::getDeleteFlag, "0");
 

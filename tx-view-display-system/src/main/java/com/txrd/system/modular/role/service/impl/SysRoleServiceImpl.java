@@ -3,6 +3,7 @@ package com.txrd.system.modular.role.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.txrd.base.exception.CommonException;
 import com.txrd.base.result.CommonResult;
@@ -12,6 +13,7 @@ import com.txrd.system.modular.position.entity.SysPosition;
 import com.txrd.system.modular.role.entity.SysRole;
 import com.txrd.system.modular.role.mapper.SysRoleMapper;
 import com.txrd.system.modular.role.service.ISysRoleService;
+import com.txrd.system.modular.user.param.GetPageParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -26,17 +28,13 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
 
     @Override
-    public IPage<SysRole> selectRolePage(IPage<SysRole> page, SysRole role) {
+    public IPage<SysRole> selectRolePage(GetPageParam param) {
+        IPage<SysRole> page = new Page<>(param.getCurrent(), param.getSize());
         LambdaQueryWrapper<SysRole> wrapper = new LambdaQueryWrapper<>();
-
-        // 动态查询条件
-        if (role != null) {
-            // 名称模糊搜索
-            wrapper.like(StringUtils.isNotBlank(role.getName()), SysRole::getName, role.getName());
-            //
-            wrapper.eq(null != role.getOrgId(), SysRole::getOrgId, role.getOrgId());
-        }
-
+        // 名称模糊搜索
+        wrapper.like(StringUtils.isNotBlank(param.getName()), SysRole::getName, param.getName());
+        //
+        wrapper.eq(null != param.getOrgId(), SysRole::getOrgId, param.getOrgId());
         // 默认过滤已删除数据
         wrapper.eq(SysRole::getDeleteFlag, "0");
 
