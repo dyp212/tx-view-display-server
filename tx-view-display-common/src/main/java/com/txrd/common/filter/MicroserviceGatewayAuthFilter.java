@@ -30,15 +30,16 @@ public class MicroserviceGatewayAuthFilter extends OncePerRequestFilter {
                                     FilterChain chain) throws ServletException, IOException {
 
         String userId = request.getHeader("userId");
-        String invokeType = request.getHeader("X-Invoke-Type");
-        String source = request.getHeader("X-Gateway-Source");
         String traceId = request.getHeader("traceId");
+        String invokeType = request.getHeader("X-Invoke-Type");
+        String feignSource = request.getHeader("X-Feign-Source");
+        String source = request.getHeader("X-Gateway-Source");
         if(StringUtils.isBlank(traceId)) {
             request.setAttribute("traceId", UUID.randomUUID().toString());
         }
 
         // 情况1：正常用户请求（有 userId，来自网关认证）
-        if (userId != null && !"SYSTEM".equals(userId)) {
+        if (userId != null && invokeType == null && "gateway".equals(source)) {
             String permissions = request.getHeader("permissions");
             List<SimpleGrantedAuthority> authorityList = Collections.emptyList();
             if(StringUtils.isNotBlank(permissions)) {
@@ -56,9 +57,9 @@ public class MicroserviceGatewayAuthFilter extends OncePerRequestFilter {
         }
 
         // 情况2：内部系统调用（SYSTEM + INTERNAL 标记）
-        if ("SYSTEM".equals(userId) && "INTERNAL".equals(invokeType)) {
+        if ("INTERNAL".equals(invokeType) || "FEIGN".equals(feignSource)) {
             UsernamePasswordAuthenticationToken auth =
-                    new UsernamePasswordAuthenticationToken("SYSTEM", null,
+                    new UsernamePasswordAuthenticationToken(userId, null,
                             Collections.singletonList(new SimpleGrantedAuthority("ROLE_SYSTEM")));
             SecurityContextHolder.getContext().setAuthentication(auth);
             request.setAttribute(RequestAttributeSecurityContextRepository.DEFAULT_REQUEST_ATTR_NAME, SecurityContextHolder.getContext());
