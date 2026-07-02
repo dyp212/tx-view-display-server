@@ -5,4 +5,10 @@
 <mapper namespace="com.txrd.system.modular.user.mapper.SysUserRoleMapper">
 
 
+    <select id="getUserRoles" resultType="com.txrd.system.modular.role.entity.SysRole">
+        SELECT r.*
+        FROM sys_role r
+        left join sys_user_role ur on r.id=ur.role_id
+        where ur.user_id=#{userId}
+    </select>
 </mapper>

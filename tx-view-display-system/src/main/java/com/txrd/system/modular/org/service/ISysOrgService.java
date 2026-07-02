@@ -29,4 +29,6 @@ public interface ISysOrgService extends IService<SysOrg> {
      * @return
      */
     CommonResult saveOrg(SysOrg sysOrg, String currentAccount);
+
+    CommonResult delete(Long orgId, String userAccount);
 }

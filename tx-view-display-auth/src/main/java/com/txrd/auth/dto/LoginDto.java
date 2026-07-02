@@ -17,7 +17,9 @@ public class LoginDto {
     @Schema(description = "帐号ID")
     private Long userId;
     @Schema(description = "帐号")
-    private String username;
+    private String userAccount;
+    @Schema(description = "姓名")
+    private String userName;
     @Schema(description = "权限值列表")
     private List<String> permissions;
     @Schema(description = "角色对象列表")

@@ -4,15 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="文档参数返回值增加注释">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/config/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/SystemApplication.java" afterDir="false" />
+    <list default="true" id="09b70fd9-7c41-4026-8362-01d7d1a1d89c" name="更改" comment="表结构更新">
+      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/config/JwtTokenGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/config/JwtTokenGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/LoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/dto/LoginDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-auth/src/main/java/com/txrd/auth/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-base/src/main/java/com/txrd/base/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-base/src/main/java/com/txrd/base/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/vo/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-common/src/main/java/com/txrd/common/vo/UserVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/controller/SysOrgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/controller/SysOrgController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/service/ISysOrgService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/service/ISysOrgService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/service/impl/SysOrgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/service/impl/SysOrgServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/controller/SysPermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/controller/SysPermissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/service/ISysPermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/service/ISysPermissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/service/impl/SysPermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/service/impl/SysPermissionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/controller/SysPositionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/controller/SysPositionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/entity/SysPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/entity/SysPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/service/ISysPositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/service/ISysPositionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/service/impl/SysPositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/position/service/impl/SysPositionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRolePermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/controller/SysRolePermissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/entity/SysRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/ISysRolePermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/ISysRolePermissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/ISysRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/impl/SysRolePermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/impl/SysRolePermissionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/impl/SysRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/role/service/impl/SysRoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/entity/SysUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/mapper/SysUserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/mapper/SysUserRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/mapper/mapping/SysUserRoleMapper .xml" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/mapper/mapping/SysUserRoleMapper .xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/param/GetPageParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/param/GetPageParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/ISysUserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/ISysUserRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/ISysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/ISysUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/impl/SysUserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/impl/SysUserRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/_sql/system.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/_sql/system.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages_en_US.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages_en_US.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tx-view-display-system/src/main/resources/i18n/messages_zh_CN.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,15 +59,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "dyp212"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dyp212&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/dyp212/springcloud.git",
+    "url": "https://github.com/dyp212/tx-view-display-server.git",
     "accountId": "8b78dd43-cd6e-414a-87bb-022d6b8a72dd"
   }
 }]]></component>
@@ -275,6 +303,7 @@
       <workItem from="1781775681029" duration="30928000" />
       <workItem from="1782293708515" duration="1483000" />
       <workItem from="1782352502220" duration="13000000" />
+      <workItem from="1782869050839" duration="3277000" />
     </task>
     <task id="LOCAL-00001" summary="恢复登录验证码使用逻辑">
       <option name="closed" value="true" />
@@ -324,7 +353,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782374229006</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="整体调整，服务间传递当前用户对象及关联调整">
+      <option name="closed" value="true" />
+      <created>1782869543636</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1782869543636</updated>
+    </task>
+    <task id="LOCAL-00008" summary="整体调整，服务间传递当前用户对象及关联调整">
+      <option name="closed" value="true" />
+      <created>1782869562059</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1782869562059</updated>
+    </task>
+    <task id="LOCAL-00009" summary="表结构更新">
+      <option name="closed" value="true" />
+      <created>1782869900122</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1782869900122</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,14 +390,16 @@
     <MESSAGE value="更新认证权限Token校验的逻辑" />
     <MESSAGE value="增加rabbitMQ异步存储日志" />
     <MESSAGE value="文档参数返回值增加注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="文档参数返回值增加注释" />
+    <MESSAGE value="整体调整，服务间传递当前用户对象及关联调整" />
+    <MESSAGE value="表结构更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="表结构更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/org/controller/SysOrgController.java</url>
-          <line>47</line>
+          <line>49</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -359,7 +414,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java</url>
-          <line>59</line>
+          <line>54</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -374,7 +429,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/user/controller/SysUserController.java</url>
-          <line>58</line>
+          <line>53</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -389,7 +444,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tx-view-display-system/src/main/java/com/txrd/system/modular/permission/controller/SysPermissionController.java</url>
-          <line>65</line>
+          <line>63</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

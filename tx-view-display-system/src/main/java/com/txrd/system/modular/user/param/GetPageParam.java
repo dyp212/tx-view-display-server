@@ -23,7 +23,7 @@ public class GetPageParam {
     @Schema(description = "手机")
     private String phone;
 
-    @Schema(description = "用户状态 (如: 0-正常, 1-禁用)")
+    @Schema(description = "用户状态 (如: 1-正常, 0-禁用)")
     private Integer userStatus;
 
     @Schema(description = "机构ID")

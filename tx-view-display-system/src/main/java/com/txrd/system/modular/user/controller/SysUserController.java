@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
  *
  **/
 @Tag(name = "用户控制器")
-@ApiSupport(order = 6)
+@ApiSupport(order = 5)
 @Validated
 @RestController
 @RequestMapping("/sys/user")
@@ -51,7 +51,7 @@ public class SysUserController {
     @ApiOperationSupport(order = 2)
     @Operation(summary = "保存")
     @PostMapping("/save")
-    @PreAuthorize("hasAuthority('user:save')")
+//    @PreAuthorize("hasAuthority('user:save')")
     public CommonResult save(@RequestHeader(value = "account", required = false) String userAccount, @RequestBody SysUser user) {
         Authentication authorities = SecurityContextHolder.getContext().getAuthentication();
         return userService.saveUser(user, userAccount);
@@ -64,7 +64,7 @@ public class SysUserController {
     @Operation(summary = "根据ID获取详情")
     @GetMapping("/{id}")
     public CommonResult<SysUser> getById(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        return CommonResult.data(userService.getById(id));
+        return CommonResult.data(userService.getInfoById(id));
     }
 
     /**

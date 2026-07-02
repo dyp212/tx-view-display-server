@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
  *
  */
 @Tag(name = "角色控制器")
-@ApiSupport(order = 3)
+@ApiSupport(order = 4)
 @Validated
 @RestController
 @RequestMapping("/sys/role")
@@ -52,7 +52,7 @@ public class SysRoleController {
     @Operation(summary = "根据ID获取详情")
     @GetMapping("/info/{id}")
     public CommonResult<SysRole> getById(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        return CommonResult.data(roleService.getById(id));
+        return CommonResult.data(roleService.getInfoById(id));
     }
 
     /**
@@ -62,12 +62,6 @@ public class SysRoleController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
     public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount,@Schema(description = "要操作数据ID") @PathVariable("id") Long id) {
-        SysRole role = new SysRole();
-        role.setId(id);
-        role.setDeleteFlag(1); // 标记删除
-        role.setUpdateUser(userAccount);
-        role.setUpdateTime(LocalDateTime.now());
-        roleService.removeById(role);
-        return CommonResult.ok();
+        return roleService.delete(id, userAccount);
     }
 }

@@ -15,7 +15,14 @@ import com.txrd.system.modular.org.entity.SysOrg;
 import com.txrd.system.modular.org.mapper.SysOrgMapper;
 import com.txrd.system.modular.org.param.GetPageParam;
 import com.txrd.system.modular.org.service.ISysOrgService;
+import com.txrd.system.modular.position.entity.SysPosition;
+import com.txrd.system.modular.position.mapper.SysPositionMapper;
+import com.txrd.system.modular.role.entity.SysRole;
+import com.txrd.system.modular.role.entity.SysRolePermission;
+import com.txrd.system.modular.role.mapper.SysRoleMapper;
 import com.txrd.system.modular.user.entity.SysUser;
+import com.txrd.system.modular.user.mapper.SysUserMapper;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +42,13 @@ public class SysOrgServiceImpl extends ServiceImpl<SysOrgMapper, SysOrg> impleme
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Resource
+    private SysRoleMapper sysRoleMapper;
+    @Resource
+    private SysUserMapper sysUserMapper;
+    @Resource
+    private SysPositionMapper sysPositionMapper;
+
 
     @Override
     public IPage<SysOrg> selectOrgPage(GetPageParam param){
@@ -100,6 +114,26 @@ public class SysOrgServiceImpl extends ServiceImpl<SysOrgMapper, SysOrg> impleme
         return CommonResult.ok();
     }
 
+    @Override
+    public CommonResult delete(Long orgId, String userAccount) {
+        Long count = sysPositionMapper.selectCount(new LambdaQueryWrapper<SysPosition>().eq(SysPosition::getOrgId, orgId));
+        if(count > 0){
+            return CommonResult.error(I18nUtil.getMessage("org.position.used"));
+        }
+        if(sysRoleMapper.selectCount(new LambdaQueryWrapper<SysRole>().eq(SysRole::getOrgId, orgId)) > 0){
+            return CommonResult.error(I18nUtil.getMessage("org.role.used"));
+        }
+        if(sysUserMapper.selectCount(new LambdaQueryWrapper<SysUser>().eq(SysUser::getOrgId, orgId)) > 0){
+            return CommonResult.error(I18nUtil.getMessage("org.user.used"));
+        }
+        SysOrg org = new SysOrg();
+        org.setId(orgId);
+        org.setUpdateUser(userAccount);
+        org.setUpdateTime(LocalDateTime.now());
+        super.removeById(org);
+        return CommonResult.ok();
+    }
+
     private void setChildren(OrgTreeDTO parent, List<OrgTreeDTO> allOrgs) {
         List<OrgTreeDTO> children = allOrgs.stream()
                 .filter(org -> parent.getId().equals(org.getParentId()))
@@ -119,12 +153,16 @@ public class SysOrgServiceImpl extends ServiceImpl<SysOrgMapper, SysOrg> impleme
         }
         if(org.getId() == null){
             org.setDeleteFlag(0);
+            org.setIsEnabled(0);
             org.setCreateUser(userAccount);
             org.setCreateTime(LocalDateTime.now());
         }
 
         if(org.getDeleteFlag() == null){
             org.setDeleteFlag(0);
+        }
+        if(org.getIsEnabled() == null){
+            org.setIsEnabled(0);
         }
         org.setUpdateUser(userAccount);
         org.setUpdateTime(LocalDateTime.now());

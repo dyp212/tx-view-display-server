@@ -30,4 +30,6 @@ public interface ISysPermissionService extends IService<SysPermission> {
     List<SysPermissionDto> getPermissionTree();
 
     CommonResult savePermission(SysPermission permission, String currentAccount);
+
+    CommonResult delete(Long permissionId, String userAccount);
 }

@@ -2,6 +2,7 @@
 package com.txrd.system.modular.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.txrd.system.core.entity.BaseEntity;
@@ -119,9 +120,9 @@ public class SysUser extends BaseEntity { // 继承之前定义的 BaseEntity
     private String countyName;
 
     /**
-     * 用户状态 (如: 0-正常, 1-禁用)
+     * 用户状态 (如: 1-正常, 0-禁用)
      */
-    @Schema(description = "用户状态 (如: 0-正常, 1-禁用)")
+    @Schema(description = "用户状态 (如: 1-正常, 0-禁用)")
     private Integer userStatus;
 
     /**
@@ -135,4 +136,18 @@ public class SysUser extends BaseEntity { // 继承之前定义的 BaseEntity
      */
     @Schema(description = "扩展信息 JSON")
     private String extJson;
+
+    /**
+     * 所属组织
+     */
+    @Schema(description = "所属组织")
+    @TableField(exist = false)
+    private String orgName;
+
+    /**
+     * 所属职位
+     */
+    @Schema(description = "所属职位")
+    @TableField(exist = false)
+    private String positionName;
 }

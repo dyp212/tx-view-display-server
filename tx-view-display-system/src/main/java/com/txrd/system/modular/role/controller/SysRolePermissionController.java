@@ -3,6 +3,7 @@ package com.txrd.system.modular.role.controller;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.txrd.base.result.CommonResult;
+import com.txrd.system.modular.role.param.AssignRolePermissionParam;
 import com.txrd.system.modular.role.service.ISysRolePermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "角色权限控制器")
-@ApiSupport(order = 5)
+@ApiSupport(order = 6)
 @RestController
 @RequestMapping("/sys/role/permission")
 public class SysRolePermissionController {
@@ -37,8 +38,8 @@ public class SysRolePermissionController {
     @ApiOperationSupport(order = 2)
     @Operation(summary = "分配权限")
     @PostMapping("/assign")
-    public CommonResult assign(@Schema(description = "操作角色Id ") @RequestParam Long roleId, @Schema(description = "要授权的权限ID列表 ") @RequestBody List<Long> permissionIds) {
-        rolePermissionService.assignPermissions(roleId, permissionIds);
+    public CommonResult assign(@RequestBody AssignRolePermissionParam param) {
+        rolePermissionService.assignPermissions(param);
         return CommonResult.ok();
     }
 

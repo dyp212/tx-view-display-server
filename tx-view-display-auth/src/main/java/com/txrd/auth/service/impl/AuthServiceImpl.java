@@ -45,7 +45,7 @@ public class AuthServiceImpl implements IAuthService {
         }
 
         // 3. 验证账号状态
-        if (user.getUserStatus() == 1) {
+        if (user.getUserStatus() == 0) {
             return CommonResult.error(I18nUtil.getMessage("user.account.disabled"));
         }
 
@@ -54,7 +54,7 @@ public class AuthServiceImpl implements IAuthService {
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             return CommonResult.error(I18nUtil.getMessage("user.login.fail"));
         }
-        List<String> permissions = user.getPermissions().stream().map(PermissionVo::getValue).collect(Collectors.toList());
+        List<String> permissions = user.getPermissions().stream().map(PermissionVo::getValue).filter(StringUtils::isNotBlank).collect(Collectors.toList());
         /**
         // 5. 构建 JWT Claims
         Map<String, Object> claims = new HashMap<>();
@@ -75,7 +75,8 @@ public class AuthServiceImpl implements IAuthService {
         return CommonResult.data(LoginDto.builder()
                 .token(token)
                 .userId(user.getId())
-                .username(user.getAccount())
+                .userAccount(user.getAccount())
+                .userName(user.getName())
                 .permissions(permissions)
                 .roleVos(user.getRoles())
                 .permissionVos(user.getPermissions())

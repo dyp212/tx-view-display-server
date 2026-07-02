@@ -17,6 +17,10 @@ import com.txrd.system.modular.permission.mapper.SysPermissionMapper;
 import com.txrd.system.modular.permission.service.ISysPermissionService;
 import com.txrd.system.modular.position.entity.SysPosition;
 import com.txrd.system.modular.permission.param.GetPageParam;
+import com.txrd.system.modular.role.entity.SysRolePermission;
+import com.txrd.system.modular.role.mapper.SysRolePermissionMapper;
+import com.txrd.system.modular.user.entity.SysUserRole;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +39,8 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Resource
+    private SysRolePermissionMapper sysRolePermissionMapper;
 
     @Override
     public IPage<SysPermission> selectPermissionPage(GetPageParam param){
@@ -95,6 +101,21 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
             }
         }
         super.saveOrUpdate(permission);
+        return CommonResult.ok();
+    }
+
+    @Override
+    public CommonResult delete(Long permissionId, String userAccount) {
+        Long count = sysRolePermissionMapper.selectCount(new LambdaQueryWrapper<SysRolePermission>().eq(SysRolePermission::getPermissionId, permissionId));
+        if(count > 0){
+            return CommonResult.error(I18nUtil.getMessage("permission.role.used"));
+        }
+        SysPermission permission = new SysPermission();
+        permission.setId(permissionId);
+        permission.setDeleteFlag(1); // 标记删除
+        permission.setUpdateUser(userAccount);
+        permission.setUpdateTime(LocalDateTime.now());
+        super.removeById(permission);
         return CommonResult.ok();
     }
 

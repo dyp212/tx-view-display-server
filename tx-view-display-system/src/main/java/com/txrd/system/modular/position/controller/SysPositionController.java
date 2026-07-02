@@ -52,7 +52,7 @@ public class SysPositionController {
     @Operation(summary = "根据ID获取详情")
     @GetMapping("/info/{id}")
     public CommonResult<SysPosition> getById(@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        return CommonResult.data(positionService.getById(id));
+        return CommonResult.data(positionService.getInfoById(id));
     }
 
     /**
@@ -62,12 +62,6 @@ public class SysPositionController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
     public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount, @Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        SysPosition position = new SysPosition();
-        position.setId(id);
-        position.setDeleteFlag(1); // 标记删除
-        position.setUpdateUser(userAccount);
-        position.setUpdateTime(LocalDateTime.now());
-        positionService.removeById(position);
-        return CommonResult.ok();
+        return positionService.delete(id, userAccount);
     }
 }

@@ -26,7 +26,7 @@ import java.util.Date;
 @Slf4j
 public class JwtTokenGenerator {
 
-    private static final long EXPIRATION_TIME = 86400000;
+    private static final long EXPIRATION_TIME = 7*86400000;//7天
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -53,7 +53,7 @@ public class JwtTokenGenerator {
             JWTClaimsSet claims = new JWTClaimsSet.Builder()
                     .subject(userDetails.getId() + "") // 用户标识（必填）
                     .issuer("txrd") // 颁发者（可选）
-                    .expirationTime(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // 1小时后过期
+                    .expirationTime(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                     .claim("username", userDetails.getAccount())
                     .claim("roles", userDetails.getRoles().stream().map(RoleVo::getName).toList())
                     .claim("permissions", userDetails.getPermissions().stream().map(PermissionVo::getValue).toList())

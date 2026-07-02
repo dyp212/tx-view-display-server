@@ -24,4 +24,8 @@ public interface ISysPositionService extends IService<SysPosition> {
     IPage<SysPosition> selectPositionPage(GetPageParam param);
 
     CommonResult savePostion(SysPosition position, String currentAccount);
+
+    CommonResult delete(Long positionId, String userAccount);
+
+    SysPosition getInfoById(Long positionId);
 }

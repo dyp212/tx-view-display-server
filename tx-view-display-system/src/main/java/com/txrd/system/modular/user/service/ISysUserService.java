@@ -26,4 +26,6 @@ public interface ISysUserService extends IService<SysUser> {
     UserVo getByAccount(String account);
 
     CommonResult saveUser(SysUser user, String currentAccount);
+
+    SysUser getInfoById(Long userId);
 }

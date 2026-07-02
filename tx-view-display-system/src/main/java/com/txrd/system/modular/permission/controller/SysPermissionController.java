@@ -28,7 +28,7 @@ import java.util.List;
  *
  */
 @Tag(name = "权限控制器")
-@ApiSupport(order = 4)
+@ApiSupport(order = 3)
 @Validated
 @RestController
 @RequestMapping("/sys/permission")
@@ -82,12 +82,6 @@ public class SysPermissionController {
     @Operation(summary = "删除 (逻辑删除)")
     @DeleteMapping("/del/{id}")
     public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount, @Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        SysPermission permission = new SysPermission();
-        permission.setId(id);
-        permission.setDeleteFlag(1); // 标记删除
-        permission.setUpdateUser(userAccount);
-        permission.setUpdateTime(LocalDateTime.now());
-        permissionService.removeById(permission);
-         return CommonResult.ok();
+         return permissionService.delete(id, userAccount);
     }
 }

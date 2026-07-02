@@ -9,20 +9,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.txrd.base.exception.CommonException;
 import com.txrd.base.result.CommonResult;
 import com.txrd.base.util.I18nUtil;
+import com.txrd.system.modular.org.entity.SysOrg;
+import com.txrd.system.modular.org.mapper.SysOrgMapper;
+import com.txrd.system.modular.position.entity.SysPosition;
+import com.txrd.system.modular.position.mapper.SysPositionMapper;
+import com.txrd.system.modular.role.entity.SysRole;
 import com.txrd.system.modular.user.entity.SysUser;
 import com.txrd.system.modular.user.mapper.SysUserMapper;
 import com.txrd.system.modular.user.param.GetPageParam;
 import com.txrd.system.modular.user.service.ISysUserService;
 import com.txrd.common.vo.RoleVo;
 import com.txrd.common.vo.UserVo;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * 用户Service接口实现类
@@ -38,6 +48,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private ObjectMapper objectMapper;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Resource
+    private SysOrgMapper sysOrgMapper;
+    @Resource
+    private SysPositionMapper sysPositionMapper;
 
     @Override
     public IPage<SysUser> selectUserPage(GetPageParam param){
@@ -61,8 +75,31 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 按创建时间倒序排列
         wrapper.orderByDesc(SysUser::getCreateTime);
 
-        // 执行分页查询
-        return this.page(page, wrapper);
+        IPage<SysUser> result = this.page(page, wrapper);
+        if(!CollectionUtils.isEmpty(result.getRecords())){
+            List<Long> orgIds = result.getRecords().stream().map(SysUser::getOrgId).filter(Objects::nonNull).toList();
+            if(!CollectionUtils.isEmpty(orgIds)){
+                List<SysOrg> sysOrgs = sysOrgMapper.selectBatchIds(orgIds);
+                if(!CollectionUtils.isEmpty(sysOrgs)){
+                    Map<Long, String> orgMap = sysOrgs.stream().collect(Collectors.toMap(SysOrg::getId, SysOrg::getName));
+                    result.getRecords().forEach(item -> {
+                        item.setOrgName(orgMap.get(item.getOrgId()));
+                    });
+                }
+            }
+            //
+            List<Long> positionIds = result.getRecords().stream().map(SysUser::getPositionId).filter(Objects::nonNull).toList();
+            if(!CollectionUtils.isEmpty(positionIds)){
+                List<SysPosition> positions = sysPositionMapper.selectBatchIds(positionIds);
+                if(!CollectionUtils.isEmpty(positions)){
+                    Map<Long, String> positionMap = positions.stream().collect(Collectors.toMap(SysPosition::getId, SysPosition::getName));
+                    result.getRecords().forEach(item -> {
+                        item.setPositionName(positionMap.get(item.getPositionId()));
+                    });
+                }
+            }
+        }
+        return result;
     }
 
     @Override
@@ -98,7 +135,23 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         this.checkUser(user, currentAccount);
         super.saveOrUpdate(user);
-        return CommonResult.ok();
+        return CommonResult.data(user);
+    }
+
+    @Override
+    public SysUser getInfoById(Long userId) {
+        SysUser user = super.getById(userId);
+        if(user != null){
+            if(user.getOrgId() != null){
+                SysOrg sysOrg = sysOrgMapper.selectById(user.getOrgId());
+                user.setOrgName(sysOrg.getName());
+            }
+            if(user.getPositionId() != null){
+                SysPosition sysPosition = sysPositionMapper.selectById(user.getPositionId());
+                user.setPositionName(sysPosition.getName());
+            }
+        }
+        return user;
     }
 
     private void checkUser(SysUser user, String userAccount) {
@@ -109,13 +162,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             if(user.getPassword() == null){
                 user.setPassword("123456");
             }
-            user.setUserStatus(0);
+            user.setUserStatus(1);
             user.setDeleteFlag(0);
             user.setCreateUser(userAccount);
             user.setCreateTime(LocalDateTime.now());
         }
         if(user.getUserStatus() == null){
-            user.setUserStatus(0);
+            user.setUserStatus(1);
         }
         if(user.getDeleteFlag() == null){
             user.setDeleteFlag(0);

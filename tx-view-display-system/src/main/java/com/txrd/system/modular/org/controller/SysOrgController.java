@@ -91,11 +91,6 @@ public class SysOrgController {
     @DeleteMapping("/del/{id}")
 //    @RequirePermission("org:del")
     public CommonResult remove(@RequestHeader(value = "account", required = false) String userAccount,@Schema(description = "要操作数据ID")@PathVariable("id") Long id) {
-        SysOrg org = new SysOrg();
-        org.setId(id);
-        org.setUpdateUser(userAccount);
-        org.setUpdateTime(LocalDateTime.now());
-        sysOrgService.removeById(org);
-        return CommonResult.ok();
+        return sysOrgService.delete(id, userAccount);
     }
 }

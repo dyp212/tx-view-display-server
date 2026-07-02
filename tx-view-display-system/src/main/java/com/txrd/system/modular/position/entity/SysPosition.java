@@ -3,6 +3,7 @@ package com.txrd.system.modular.position.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.txrd.system.core.entity.BaseEntity;
@@ -29,7 +30,7 @@ public class SysPosition extends BaseEntity {
      * 所属组织ID
      */
     @Schema(description = "所属组织ID")
-    private String orgId;
+    private Long orgId;
 
     /**
      * 岗位名称
@@ -60,4 +61,12 @@ public class SysPosition extends BaseEntity {
      */
     @Schema(description = "是否可用")
     private Integer isEnabled;
+
+
+    /**
+     * 所属组织
+     */
+    @Schema(description = "所属组织")
+    @TableField(exist = false)
+    private String orgName;
 }

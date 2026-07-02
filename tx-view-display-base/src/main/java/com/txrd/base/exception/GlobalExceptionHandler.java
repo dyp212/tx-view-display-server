@@ -5,6 +5,7 @@ import com.txrd.base.util.I18nUtil;
 import feign.FeignException;
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -76,6 +77,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidBearerTokenException.class)
     public CommonResult<?> handleInvalidBearerTokenException(InvalidBearerTokenException ex) {
         return CommonResult.get(403, I18nUtil.getMessage("server.authentication.fail"), null);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public CommonResult<?> handleAccessDeniedException(AccessDeniedException ex) {
+        return CommonResult.get(401, I18nUtil.getMessage("server.permission.fail"), null);
     }
 
     /**

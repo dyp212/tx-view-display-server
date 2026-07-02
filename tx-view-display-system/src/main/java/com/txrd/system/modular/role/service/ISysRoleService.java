@@ -21,4 +21,8 @@ public interface ISysRoleService extends IService<SysRole> {
     IPage<SysRole> selectRolePage(GetPageParam param);
 
     CommonResult saveRole(SysRole sysRole, String currentAccount);
+
+    CommonResult delete(Long roleId, String userAccount);
+
+    SysRole getInfoById(Long roleId);
 }
